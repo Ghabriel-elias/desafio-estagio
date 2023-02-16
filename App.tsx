@@ -7,10 +7,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { ActivityIndicator } from 'react-native';
 
-import theme from './src/global/styles/theme';
-import { Home } from './src/screens/Home';
-import { Dashboard } from './src/screens/dashboard';
-
 import {
   useFonts,
   Poppins_600SemiBold,
@@ -24,12 +20,16 @@ import {
   Roboto_500Medium,
   Roboto_400Regular
 } from '@expo-google-fonts/roboto'
+
+import theme from './src/global/styles/theme';
+import { Home } from './src/screens/Home';
+import { Dashboard } from './src/screens/dashboard';
 import { Delivery } from './src/screens/delivery';
-import { DashboardHome } from './src/screens/dashboard/dashbord-home';
+import { propsNavigationStack } from './src/models';
 
 export default function App() {
 
-  const Stack = createNativeStackNavigator()
+  const Stack = createNativeStackNavigator<propsNavigationStack>()
 
   const [fontsLoad] = useFonts({
     Poppins_600SemiBold,
@@ -85,10 +85,6 @@ export default function App() {
                   color: theme.colors.title_login,
                 }
               }}
-            />
-            <Stack.Screen
-              name='DashboardHome'
-              component={DashboardHome}
             />
           </Stack.Navigator>
         </NavigationContainer>

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { TouchableOpacity, Modal, ActivityIndicator, View } from "react-native";
+import { TouchableOpacity, Modal, ActivityIndicator } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native'
+
 import { Inputs } from "../../components/inputs";
 import { EyeShow } from "../../components/showPassword";
 import { Touchables } from "../../components/Touchables";
-import { useNavigation } from '@react-navigation/native'
-
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
   ContentModal,
@@ -31,26 +31,23 @@ import {
   LogoGoogle,
   TextTouchGoogle,
 } from "./style";
+import { PropsStack } from "../../models";
 
 export function Home() {
 
+  const navigation = useNavigation<PropsStack>()
+
   const [hideModal, setHideModal] = useState(false)
-  const [opacityContainer, setOpacityContainer] = useState(1)
-
-  const [emailError, setEmailError] = useState('')
-  const [senhaError, setSenhaError] = useState('')
-
-  const [email, setEmail] = useState('')
-  const [senha, setSenha] = useState('')
+  const [opacityContainer, setOpacityContainer] = useState('opacityOff')
 
   useEffect(() => {
     setHideModal(true)
-    setOpacityContainer(0.4)
+    setOpacityContainer('opacityOn')
     async function load() {
       const emailLoad = await AsyncStorage.getItem('email')
       const senhaLoad = await AsyncStorage.getItem('senha')
       setHideModal(false)
-      setOpacityContainer(1)
+      setOpacityContainer('opacityOff')
       if (emailLoad != '' && senhaLoad != '') {
         navigation.navigate('Dashboard')
       }
@@ -58,7 +55,33 @@ export function Home() {
     load()
   }, [])
 
-  const navigation: any = useNavigation()
+  const [emailError, setEmailError] = useState('')
+  const [senhaError, setSenhaError] = useState('')
+
+  const [email, setEmail] = useState('')
+  const [senha, setSenha] = useState('')
+
+  function autentication() {
+    if (email === '' || senha === '') {
+      setEmailError('Preencha as informações para continuar')
+      setSenhaError('Preencha as informações para continuar')
+    } else if (!email.includes('@')) {
+      setEmailError('Email inválido, não há "@".')
+    } else if (!email.includes('.com')) {
+      setEmailError('Email inválido, não há ".com"')
+    } else if (senha.length < 7) {
+      setSenhaError('A senha deve conter no mínimo 8 caracteres.')
+    } else {
+      navigation.navigate("Dashboard")
+      async function registrarUsuario() {
+        await AsyncStorage.setItem('email', email)
+        await AsyncStorage.setItem('senha', senha)
+      }
+      registrarUsuario()
+      setEmailError('')
+      setSenhaError('')
+    }
+  }
 
   const [hidePassword, setHidePassword] = useState(true)
   const [eye, setEye] = useState('eye-off')
@@ -73,32 +96,6 @@ export function Home() {
     }
   }
 
-  function autentication() {
-    if (email === '' || senha === '') {
-      setEmailError('Preencha as informações para continuar')
-      setSenhaError('Preencha as informações para continuar')
-      return
-    } else if (!email.includes('@')) {
-      setEmailError('Email inválido, não há "@".')
-      return
-    } else if (!email.includes('.com')) {
-      setEmailError('Email inválido, não há ".com"')
-      return
-    } else if (senha.length < 7) {
-      setSenhaError('A senha deve conter no mínimo 8 caracteres.')
-    } else {
-      navigation.navigate("Dashboard")
-      async function registrarUsuario() {
-        await AsyncStorage.setItem('email', email)
-        await AsyncStorage.setItem('senha', senha)
-      }
-      registrarUsuario()
-      setEmailError('')
-      setSenhaError('')
-      return
-    }
-  }
-
   return (
     <SafeArea>
       <Modal visible={hideModal} transparent={true} >
@@ -106,7 +103,7 @@ export function Home() {
           <ActivityIndicator size={45} color={'#FA641E'} />
         </ContentModal>
       </Modal>
-      <Container style={{ opacity: opacityContainer }}>
+      <Container opacity={opacityContainer}>
         <Header>
           <ImageLogo />
           <Title>Para entregadores</Title>
@@ -140,7 +137,7 @@ export function Home() {
               <Line></Line>
             </ViewSeparate>
             <ViewTouchGoogle>
-              <LogoGoogle source={require('../../assets/logo-google.png')} />
+              <LogoGoogle />
               <TextTouchGoogle>Continuar com o Google</TextTouchGoogle>
             </ViewTouchGoogle>
           </Footer>

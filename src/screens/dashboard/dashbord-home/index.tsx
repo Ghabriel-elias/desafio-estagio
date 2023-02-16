@@ -1,9 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigation } from '@react-navigation/native'
+import { LogBox } from 'react-native';
+
 import { Input } from "../../../components/inputs/style";
 import { EyeShow } from "../../../components/showPassword";
 import { Touchables } from "../../../components/Touchables";
 import { SafeArea, TextMaybeError } from "../../Home/style";
-import { useNavigation } from '@react-navigation/native'
+import { PropsStack } from '../../../models/index'
 
 import {
   Container,
@@ -27,25 +30,13 @@ import {
   TextOk,
 } from "./style";
 
-import { LogBox } from 'react-native';
-
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',
 ]);
 
 export function DashboardHome() {
 
-  const inputRef = useRef(null);
-
-  const [textError, setTextError] = useState('')
-
-
-  const navigation: any = useNavigation()
-
-  useEffect(() => {
-    navigation.addListener('focus', () => {
-    })
-  }, [])
+  const navigation = useNavigation<PropsStack>()
 
   const [data, setData] = useState('')
 
@@ -56,13 +47,6 @@ export function DashboardHome() {
   const [money, setMoney] = useState(0)
   const [eye, setEye] = useState('eye-off')
   const [totalGain, setTotalGain] = useState('----')
-  const [id, setId] = useState('')
-
-  const [aceitas, setAceitas] = useState(0)
-
-  const [rejeitadas, setRejeitadas] = useState(0)
-
-  const [total, setTotal] = useState(0)
 
   function showMoney() {
     if (eye === 'eye-off') {
@@ -74,8 +58,17 @@ export function DashboardHome() {
     }
   }
 
+  const [id, setId] = useState('')
 
-  function sendId() {
+  const [textError, setTextError] = useState('')
+
+  const [aceitas, setAceitas] = useState(0)
+
+  const [rejeitadas, setRejeitadas] = useState(0)
+
+  const [total, setTotal] = useState(0)
+
+  function sendInformations() {
     if (id === '') {
       setTextError('Insira um identificador para a entrega.')
     } else if (id.length < 4) {
@@ -100,7 +93,6 @@ export function DashboardHome() {
       setId('')
       setEye('eye-off')
       setTotalGain('----')
-      inputRef.current.clear()
     }
   }
 
@@ -140,9 +132,9 @@ export function DashboardHome() {
             <Subtitle>Número de Identificação</Subtitle>
             <AreaInputs>
               <AreaInput >
-                <Input ref={inputRef} keyboardType="numeric" maxLength={4} onChangeText={(text) => setId(text)} />
+                <Input value={id} keyboardType="numeric" maxLength={4} onChangeText={(text) => setId(text)} />
               </AreaInput>
-              <TouchableOk onPress={() => sendId()}>
+              <TouchableOk onPress={() => sendInformations()}>
                 <TextOk>Ok</TextOk>
               </TouchableOk>
             </AreaInputs>

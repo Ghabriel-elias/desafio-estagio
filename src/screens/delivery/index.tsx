@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { Touchables } from "../../components/Touchables";
 
+import { Touchables } from "../../components/Touchables";
 import { SafeArea } from "../Home/style";
 
 import {

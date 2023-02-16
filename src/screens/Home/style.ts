@@ -6,6 +6,10 @@ interface TextErrorProps {
   type: 'login' | 'dashboard'
 }
 
+interface OpacityProp {
+  opacity: string
+}
+
 export const SafeArea = styled(SafeAreaView)`
   width: 100%;
   flex: 1;
@@ -19,8 +23,13 @@ export const ContentModal = styled.View`
   align-items: center;
 `
 
-
-export const Container = styled.View`
+export const Container = styled.View<OpacityProp>`
+  ${(props => props.opacity === 'opacityOn' && css`
+  opacity: 0.4;
+  `)}
+  ${(props => props.opacity === 'opacityOff' && css`
+  opacity: 1;
+  `)}
   background-color: ${({ theme }) => theme.colors.background};
   flex: 1;
   width: 90%;
@@ -158,7 +167,9 @@ export const ViewTouchGoogle = styled.TouchableOpacity`
   justify-content: space-around;
 `
 
-export const LogoGoogle = styled.Image`
+export const LogoGoogle = styled.Image.attrs({
+  source: require('../../assets/logo-google.png')
+})`
   width: ${RFValue(25)}px;
   height: ${RFValue(25)}px;
 `

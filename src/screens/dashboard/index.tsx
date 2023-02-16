@@ -1,13 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import theme from "./../../global/styles/theme";
 import { Feather } from '@expo/vector-icons';
 import { DashboardHome } from "./dashbord-home";
 import { Static } from "./dashboardEstatic";
 
-import { useNavigation } from '@react-navigation/native'
-
-export function Dashboard({ route }: any) {
+export function Dashboard() {
 
   const icons: any = {
     Home: {
@@ -22,9 +20,6 @@ export function Dashboard({ route }: any) {
   }
 
   const Tab = createBottomTabNavigator()
-
-  const navigation: any = useNavigation()
-
 
   return (
     <Tab.Navigator
@@ -48,7 +43,7 @@ export function Dashboard({ route }: any) {
         },
       })}
     >
-      <Tab.Screen name="Relatorios" component={Static}
+      <Tab.Screen name="Relatorios" key={1} component={Static}
         options={{
           title: 'Relatórios',
         }}
