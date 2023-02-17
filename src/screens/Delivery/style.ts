@@ -2,8 +2,8 @@ import styled, { css } from "styled-components/native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { LinearGradient } from 'expo-linear-gradient'
 import { MaterialIcons } from '@expo/vector-icons';
-import theme from '../../global/styles/theme'
 
+import theme from '../../global/styles/theme'
 
 interface BorderType {
   type: 'border' | 'noBorder'
@@ -25,19 +25,19 @@ export const TitlesView = styled.View<BorderType>`
   justify-content: space-around;
   ${(props => props.type === 'border' && css`
     border-bottom-width: 0.3px;
-    border-bottom-color: ${({ theme }) => theme.colors.line_home} ;
+    border-bottom-color: ${({ theme }) => theme.colors.subtitles} ;
   `)}
 `
 
 export const Titles = styled.Text`
-  color: ${({ theme }) => theme.colors.subtitle_id};
-  font-family: ${({ theme }) => theme.fonts.regular};
+  color: ${({ theme }) => theme.colors.subtitles};
+  font-family: ${({ theme }) => theme.fonts.poppins_regular};
   font-size: ${RFValue(13)}px;
 `
 
 export const MainContents = styled.Text`
   color: ${({ theme }) => theme.colors.linear_gradient_dark};
-  font-family: ${({ theme }) => theme.fonts.bold_poppins};
+  font-family: ${({ theme }) => theme.fonts.poppins_bold};
   font-size: ${RFValue(20)}px;
 `
 
@@ -55,7 +55,7 @@ export const ViewMoney = styled.View`
 export const TitleMoney = styled.Text`
   color: ${({ theme }) => theme.colors.linear_gradient_dark};
   font-size: ${RFValue(32)}px;
-  font-family: ${({ theme }) => theme.fonts.bold_poppins};
+  font-family: ${({ theme }) => theme.fonts.poppins_bold};
   margin-bottom: ${RFValue(10)}px;
 `
 
@@ -86,13 +86,13 @@ export const ViewTexsIcon = styled.View`
 
 export const TitleTextIcon = styled.Text`
   color: ${({ theme }) => theme.colors.background};
-  font-family: ${({ theme }) => theme.fonts.medium_roboto};
+  font-family: ${({ theme }) => theme.fonts.roboto_medium};
   font-size: ${RFValue(16)}px;
 `
 
 export const SubtitleTextIcon = styled.Text`
   color: ${({ theme }) => theme.colors.background};
-  font-family: ${({ theme }) => theme.fonts.regular_roboto};
+  font-family: ${({ theme }) => theme.fonts.roboto_regular};
   font-size: ${RFValue(10)}px;
 `
 
@@ -104,7 +104,7 @@ export const MainContent = styled.View`
 export const AreaLine = styled.View`
   align-items: center;
   width: 15%;
-  `
+`
 
 export const ViewLIne = styled.View`
   height: ${RFValue(170)}px;
@@ -155,18 +155,14 @@ export const ViewInformations = styled.View`
 
 export const TitlePedido = styled.Text`
   color: ${({ theme }) => theme.colors.linear_gradient_dark};
-  font-family: ${({ theme }) => theme.fonts.medium_roboto};
+  font-family: ${({ theme }) => theme.fonts.roboto_medium};
   font-size: ${RFValue(16)}px;
   height: ${RFValue(25)}px;
-
-`
-
-export const ViewSubtitles = styled.View`
 `
 
 export const SubtitlePedidos = styled.Text`
-  color: ${({ theme }) => theme.colors.subtitle_id};
-  font-family: ${({ theme }) => theme.fonts.regular_roboto};
+  color: ${({ theme }) => theme.colors.subtitles};
+  font-family: ${({ theme }) => theme.fonts.roboto_regular};
   font-size: ${RFValue(14)}px;
 `
 
@@ -193,7 +189,7 @@ export const IconReject = styled(MaterialIcons)`
 `
 
 export const TextReject = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.medium};
+  font-family: ${({ theme }) => theme.fonts.poppins_medium};
   font-size: ${RFValue(16)}px;
   color: ${({ theme }) => theme.colors.colorReject} ;
 `

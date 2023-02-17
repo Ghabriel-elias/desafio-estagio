@@ -1,9 +1,9 @@
 import React from "react";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import theme from "./../../global/styles/theme";
+import theme from "../../../global/styles/theme";
 import { Feather } from '@expo/vector-icons';
-import { DashboardHome } from "./dashbord-home";
-import { Static } from "./dashboardEstatic";
+import { DashboardHome } from "../HomeDashboard";
+import { Static } from "../StaticsScreens";
 
 export function Dashboard() {
 
@@ -33,7 +33,7 @@ export function Dashboard() {
           const { name } = icons[route.name]
           return <Feather name={name} color={color} size={25} />
         },
-        tabBarInactiveTintColor: theme.colors.border_google,
+        tabBarInactiveTintColor: theme.colors.gray_border_google,
         tabBarActiveTintColor: theme.colors.linear_gradient_dark,
         headerShown: false,
         tabBarHideOnKeyboard: true,
@@ -47,6 +47,7 @@ export function Dashboard() {
         options={{
           title: 'Relatórios',
         }}
+
       />
       <Tab.Screen name="Home" component={DashboardHome}
         options={{

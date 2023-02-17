@@ -2,21 +2,19 @@ import React, { useEffect, useState } from "react";
 import { useNavigation } from '@react-navigation/native'
 import { LogBox } from 'react-native';
 
-import { Input } from "../../../components/inputs/style";
-import { EyeShow } from "../../../components/showPassword";
-import { Touchables } from "../../../components/Touchables";
-import { SafeArea, TextMaybeError } from "../../Home/style";
+import { Inputs } from '../../../components/TextInputs'
+import { EyeShow } from "../../../components/EyesShows";
+import { Touchables } from "../../../components/TouchablesOpacitys";
+import { SafeArea, TextMaybeError } from "../../Login/style";
 import { PropsStack } from '../../../models/index'
 
 import {
   Container,
   Main,
   TotalDay,
-  ViewTotalGain,
-  ViewData,
-  TitleTotal,
+  ViewCardTotalDay,
+  TitleCardTotal,
   MoneyTotal,
-  Data,
   Cards,
   TitleCards,
   ViewCards,
@@ -24,9 +22,9 @@ import {
   TitleResumo,
   ContResumo,
   Subtitle,
+  ViewInputs,
   AreaInput,
   TouchableOk,
-  AreaInputs,
   TextOk,
 } from "./style";
 
@@ -101,14 +99,14 @@ export function DashboardHome() {
       <Container >
         <Main>
           <TotalDay>
-            <ViewTotalGain>
-              <TitleTotal>Ganhos do Dia</TitleTotal>
-              <Data>{data}</Data>
-            </ViewTotalGain>
-            <ViewData>
+            <ViewCardTotalDay>
+              <TitleCardTotal>Ganhos do Dia</TitleCardTotal>
+              <TitleCardTotal>{data}</TitleCardTotal>
+            </ViewCardTotalDay>
+            <ViewCardTotalDay>
               <MoneyTotal>{totalGain}</MoneyTotal>
               <EyeShow type="totalGain" eye={eye} onPress={showMoney} ></EyeShow>
-            </ViewData>
+            </ViewCardTotalDay>
           </TotalDay>
           <Cards type='resumo'>
             <TitleCards>Resumos das Entregas</TitleCards>
@@ -130,14 +128,14 @@ export function DashboardHome() {
           <Cards type='entrega' behavior="padding">
             <TitleCards>Iniciar Nova Entrega</TitleCards>
             <Subtitle>Número de Identificação</Subtitle>
-            <AreaInputs>
+            <ViewInputs>
               <AreaInput >
-                <Input value={id} keyboardType="numeric" maxLength={4} onChangeText={(text) => setId(text)} />
+                <Inputs value={id} keyboardType="numeric" maxLength={4} onChangeText={(text) => setId(text)} />
               </AreaInput>
               <TouchableOk onPress={() => sendInformations()}>
                 <TextOk>Ok</TextOk>
               </TouchableOk>
-            </AreaInputs>
+            </ViewInputs>
             <TextMaybeError type="dashboard">{textError}</TextMaybeError>
             <Touchables type="icon" icon="qr-code-scanner" title="Escanear Qrcode" />
           </Cards>

@@ -3,35 +3,34 @@ import { TouchableOpacity, Modal, ActivityIndicator } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native'
 
-import { Inputs } from "../../components/inputs";
-import { EyeShow } from "../../components/showPassword";
-import { Touchables } from "../../components/Touchables";
+import { Inputs } from '../../components/TextInputs'
+import { EyeShow } from "../../components/EyesShows";
+import { Touchables } from "../../components/TouchablesOpacitys";
+import { PropsStack } from "../../models";
 
 import {
+  SafeArea,
   ContentModal,
   Container,
-  ContainerInput,
-  Footer,
   Header,
   ImageLogo,
-  Main,
-  SafeArea,
   Title,
-  TextMaybeError,
-  TitleInputs,
+  Main,
   TitleLogin,
+  TitleInputs,
+  ContainerInput,
+  TextMaybeError,
   ForgetPassword,
   Create,
   TextQuestion,
-  TextCreat,
+  Footer,
   ViewSeparate,
-  TextLogin,
+  TextLoginWithGoogle,
   Line,
   ViewTouchGoogle,
   LogoGoogle,
   TextTouchGoogle,
 } from "./style";
-import { PropsStack } from "../../models";
 
 export function Home() {
 
@@ -126,14 +125,14 @@ export function Home() {
           </TouchableOpacity>
           <Touchables icon="" type="noIcon" title="Entrar" onPress={autentication}></Touchables>
           <Create>
-            <TextQuestion>Não tem uma Conta? </TextQuestion>
+            <TextQuestion color="black">Não tem uma Conta? </TextQuestion>
             <TouchableOpacity>
-              <TextCreat>Criar agora!</TextCreat>
+              <TextQuestion color='orange'>Criar agora!</TextQuestion>
             </TouchableOpacity>
           </Create>
           <Footer>
             <ViewSeparate>
-              <TextLogin>Entrar com</TextLogin>
+              <TextLoginWithGoogle>Entrar com</TextLoginWithGoogle>
               <Line></Line>
             </ViewSeparate>
             <ViewTouchGoogle>

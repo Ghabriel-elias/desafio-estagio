@@ -1,8 +1,10 @@
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, RouteProp } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
+import { View } from "react-native";
 
-import { Touchables } from "../../components/Touchables";
-import { SafeArea } from "../Home/style";
+import { Touchables } from "../../components/TouchablesOpacitys";
+import { SafeArea } from "../Login/style";
+import { propsNavigationStack } from "../../models/index";
 
 import {
   Container,
@@ -13,8 +15,6 @@ import {
   Main,
   ViewMoney,
   TitleMoney,
-  ViewBall,
-  ViewLIne,
   ViewDeliveryIcon,
   Icon,
   ViewTexsIcon,
@@ -22,12 +22,13 @@ import {
   SubtitleTextIcon,
   MainContent,
   AreaLine,
+  ViewLIne,
   ViewEntrega,
+  ViewBall,
+  ViewSmallBall,
   ViewEnderecos,
   ViewInformations,
-  ViewSmallBall,
   TitlePedido,
-  ViewSubtitles,
   SubtitlePedidos,
   Footer,
   TouchableReject,
@@ -35,7 +36,13 @@ import {
   TextReject,
 } from "./style";
 
-export function Delivery({ route }: any) {
+type HomeScreenNavigationProp = RouteProp<propsNavigationStack, 'Delivery'>;
+
+interface Props {
+  route: HomeScreenNavigationProp;
+}
+
+export function Delivery({ route }: Props) {
 
   const [coleta, setColeta] = useState('')
 
@@ -86,7 +93,6 @@ export function Delivery({ route }: any) {
     navigation.goBack()
   }
 
-
   function reject() {
     route.params?.setRejeitadas(route.params?.rejeitadas + 1)
     route.params?.setTotal(route.params?.total + 1)
@@ -133,17 +139,17 @@ export function Delivery({ route }: any) {
               <ViewEnderecos>
                 <ViewInformations>
                   <TitlePedido>Coleta</TitlePedido>
-                  <ViewSubtitles>
+                  <View>
                     <SubtitlePedidos>{coleta}</SubtitlePedidos>
                     <SubtitlePedidos>Distancia: {coletaKm}km</SubtitlePedidos>
-                  </ViewSubtitles>
+                  </View>
                 </ViewInformations>
                 <ViewInformations>
                   <TitlePedido>Entrega</TitlePedido>
-                  <ViewSubtitles>
+                  <View>
                     <SubtitlePedidos>{entrega}</SubtitlePedidos>
                     <SubtitlePedidos>Distancia: {entregaKm}km</SubtitlePedidos>
-                  </ViewSubtitles>
+                  </View>
                 </ViewInformations>
               </ViewEnderecos>
             </MainContent>

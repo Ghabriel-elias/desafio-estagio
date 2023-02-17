@@ -10,6 +10,10 @@ interface OpacityProp {
   opacity: string
 }
 
+interface ColorTypeTexts {
+  color: 'black' | 'orange'
+}
+
 export const SafeArea = styled(SafeAreaView)`
   width: 100%;
   flex: 1;
@@ -52,8 +56,8 @@ export const ImageLogo = styled.Image.attrs({
 `
 
 export const Title = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.semiBold};
-  color: ${({ theme }) => theme.colors.title_home};
+  font-family: ${({ theme }) => theme.fonts.poppins_semiBold};
+  color: ${({ theme }) => theme.colors.titles};
   font-size: ${RFValue(18)}px;
 `
 
@@ -63,25 +67,15 @@ export const Main = styled.View`
 `
 
 export const TitleLogin = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.semiBold};
-  color: ${({ theme }) => theme.colors.title_login};
+  font-family: ${({ theme }) => theme.fonts.poppins_semiBold};
+  color: ${({ theme }) => theme.colors.title_screens};
   font-size: ${RFValue(16)}px;
   margin-bottom: ${RFValue(15)}px;
 `
 
-export const TextMaybeError = styled.Text<TextErrorProps>`
-  font-family: ${({ theme }) => theme.fonts.regular};
-  color: ${({ theme }) => theme.colors.colorReject};
-  font-size: ${RFValue(10)}px;
-  height:  ${RFValue(20)}px;
-  ${(props) => props.type === 'login' && css`
-    margin-bottom: ${RFValue(10)}px;
-  `}
-`
-
 export const TitleInputs = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.regular};
-  color: ${({ theme }) => theme.colors.texts_home};
+  font-family: ${({ theme }) => theme.fonts.poppins_regular};
+  color: ${({ theme }) => theme.colors.subtitles_texts_login};
   font-size: ${RFValue(13)}px;
   margin-bottom:  ${RFValue(6)}px;
 `
@@ -98,9 +92,19 @@ export const ContainerInput = styled.View`
   align-items: center;
 `
 
+export const TextMaybeError = styled.Text<TextErrorProps>`
+  font-family: ${({ theme }) => theme.fonts.poppins_regular};
+  color: ${({ theme }) => theme.colors.text_error};
+  font-size: ${RFValue(10)}px;
+  height:  ${RFValue(20)}px;
+  ${(props) => props.type === 'login' && css`
+    margin-bottom: ${RFValue(10)}px;
+  `}
+`
+
 export const ForgetPassword = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.regular};
-  color: ${({ theme }) => theme.colors.texts_home};
+  font-family: ${({ theme }) => theme.fonts.poppins_regular};
+  color: ${({ theme }) => theme.colors.subtitles_texts_login};
   font-size: ${RFValue(13)}px;
   margin-top: ${RFValue(6)}px;
   margin-bottom: ${RFValue(24)}px;
@@ -115,16 +119,15 @@ export const Create = styled.View`
   margin-top: ${RFValue(36)}px;
 `
 
-export const TextQuestion = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.regular};
-  color: ${({ theme }) => theme.colors.texts_home};
+export const TextQuestion = styled.Text<ColorTypeTexts>`
+  font-family: ${({ theme }) => theme.fonts.poppins_regular};
   font-size: ${RFValue(13)}px;
-`
-
-export const TextCreat = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.regular};
-  color: ${({ theme }) => theme.colors.linear_gradient_dark};
-  font-size: ${RFValue(13)}px;
+  ${(props => props.color === 'black' && css`
+   color: ${({ theme }) => theme.colors.subtitles_texts_login};   
+  `)}
+  ${(props => props.color === 'orange' && css`
+   color: ${({ theme }) => theme.colors.linear_gradient_dark};   
+  `)}
 `
 
 export const Footer = styled.View`
@@ -142,16 +145,16 @@ export const ViewSeparate = styled.View`
   flex-direction: row;
   `
 
-export const TextLogin = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.semiBold};
-  color: ${({ theme }) => theme.colors.title_home};
+export const TextLoginWithGoogle = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.poppins_semiBold};
+  color: ${({ theme }) => theme.colors.titles};
   font-size: ${RFValue(13)}px;
   width: 30%;
-  `
+`
 
 export const Line = styled.View`
   width: 70%;
-  border-color: ${({ theme }) => theme.colors.texts_home};
+  border-color: ${({ theme }) => theme.colors.subtitles};
   border-width: 0.5px;
   `
 
@@ -160,7 +163,7 @@ export const ViewTouchGoogle = styled.TouchableOpacity`
   width: 100%;
   border-width: 0.5px;
   border-radius: 15px;
-  border-color: ${({ theme }) => theme.colors.texts_home};
+  border-color: ${({ theme }) => theme.colors.gray_border_google};
   height: ${RFValue(50)}px;
   flex-direction: row;
   align-items: center;
@@ -175,7 +178,7 @@ export const LogoGoogle = styled.Image.attrs({
 `
 
 export const TextTouchGoogle = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.regular};
-  color: ${({ theme }) => theme.colors.texts_home};
+  font-family: ${({ theme }) => theme.fonts.poppins_regular};
+  color: ${({ theme }) => theme.colors.subtitles_texts_login};
   font-size: ${RFValue(15)}px;
 `

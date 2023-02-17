@@ -6,12 +6,9 @@ interface TypeEyeProps {
   type: 'password' | 'totalGain'
 }
 
-export const Container = styled.TouchableOpacity`
-`
-
 export const IconEye = styled(Feather) <TypeEyeProps>`
   ${(props => props.type === 'password' && css`
-    color: ${({ theme }) => theme.colors.linear_gradient_dark};
+    color: ${({ theme }) => theme.colors.input_password};
     font-size: ${RFValue(25)}px;
   `)}
 

@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components/native";
 import { LinearGradient } from 'expo-linear-gradient'
 import { RFValue } from "react-native-responsive-fontsize";
-import theme from "../../global/styles/theme";
 import { MaterialIcons } from '@expo/vector-icons';
 
+import theme from "../../global/styles/theme";
 interface IconChoose {
   type: 'icon' | 'noIcon'
 }
@@ -39,7 +39,7 @@ export const Icon = styled(MaterialIcons) <IconChoose>`
 `
 
 export const TextTouchable = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.medium};
+  font-family: ${({ theme }) => theme.fonts.poppins_medium};
   font-size: ${RFValue(16)}px;
   color: ${({ theme }) => theme.colors.background} ;
 `

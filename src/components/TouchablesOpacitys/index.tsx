@@ -14,10 +14,10 @@ interface TouchableProps extends TouchableOpacityProps {
   type: 'icon' | 'noIcon'
 }
 
-export function Touchables({ icon, onPress, title, type }: TouchableProps) {
+export function Touchables({ icon, title, type, ...rest }: TouchableProps) {
   return (
     <Container>
-      <Touchable onPress={onPress}>
+      <Touchable {...rest}>
         <Gradient>
           <Icon name={icon} type={type} />
           <TextTouchable>{title}</TextTouchable>

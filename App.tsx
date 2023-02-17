@@ -22,9 +22,9 @@ import {
 } from '@expo-google-fonts/roboto'
 
 import theme from './src/global/styles/theme';
-import { Home } from './src/screens/Home';
-import { Dashboard } from './src/screens/dashboard';
-import { Delivery } from './src/screens/delivery';
+import { Home } from './src/screens/Login';
+import { Dashboard } from './src/screens/DashboardsTabs/TabNavigatorScreen';
+import { Delivery } from './src/screens/Delivery';
 import { propsNavigationStack } from './src/models';
 
 export default function App() {

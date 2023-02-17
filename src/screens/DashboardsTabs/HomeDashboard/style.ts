@@ -34,44 +34,31 @@ export const TotalDay = styled(LinearGradient).attrs({
   padding: 0px ${RFValue(20)}px;
 `
 
-export const ViewTotalGain = styled.View`
+export const ViewCardTotalDay = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 `
 
-export const ViewData = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-`
-
-export const TitleTotal = styled.Text`
+export const TitleCardTotal = styled.Text`
   color: ${({ theme }) => theme.colors.background};
-  font-family: ${({ theme }) => theme.fonts.medium};
+  font-family: ${({ theme }) => theme.fonts.poppins_medium};
   font-size: ${RFValue(16)}px;
 `
 
 export const MoneyTotal = styled.Text`
   color: ${({ theme }) => theme.colors.background};
-  font-family: ${({ theme }) => theme.fonts.bold_roboto};
+  font-family: ${({ theme }) => theme.fonts.roboto_bold};
   font-size: ${RFValue(30)}px;
   margin-left: ${RFValue(10)}px;
-`
-
-export const Data = styled.Text`
-  color: ${({ theme }) => theme.colors.background};
-  font-family: ${({ theme }) => theme.fonts.medium};
-  font-size: ${RFValue(16)}px;
 `
 
 export const Cards = styled.KeyboardAvoidingView<CardMargin>`
   width: 100%;
   border-radius: 15px;
   border-width: 0.5px;
-  border-color: ${({ theme }) => theme.colors.cards_shadow};
+  border-color: ${({ theme }) => theme.colors.cards_resumo_border};
   flex-direction: column;
   justify-content: center;
   height: ${RFValue(185)}px;
@@ -83,8 +70,8 @@ export const Cards = styled.KeyboardAvoidingView<CardMargin>`
 `
 
 export const TitleCards = styled.Text`
-  color: ${({ theme }) => theme.colors.title_home};
-  font-family: ${({ theme }) => theme.fonts.bold_poppins};
+  color: ${({ theme }) => theme.colors.titles};
+  font-family: ${({ theme }) => theme.fonts.poppins_bold};
   font-size: ${RFValue(14)}px;
 `
 
@@ -100,7 +87,7 @@ export const CardsResumo = styled.View`
   width: 32%;
   border-radius: 15px;
   border-width: 1px;
-  border-color: ${({ theme }) => theme.colors.cards_shadow};
+  border-color: ${({ theme }) => theme.colors.border_resumo};
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -108,22 +95,27 @@ export const CardsResumo = styled.View`
 `
 
 export const TitleResumo = styled.Text`
-  color: ${({ theme }) => theme.colors.subtitle_resumo};
-  font-family: ${({ theme }) => theme.fonts.regular};
+  color: ${({ theme }) => theme.colors.gray_border_google};
+  font-family: ${({ theme }) => theme.fonts.poppins_regular};
   font-size: ${RFValue(10)}px;
 `
 
 export const ContResumo = styled.Text`
-  color: ${({ theme }) => theme.colors.title_home};
-  font-family: ${({ theme }) => theme.fonts.medium};
+  color: ${({ theme }) => theme.colors.titles};
+  font-family: ${({ theme }) => theme.fonts.poppins_medium};
   font-size: ${RFValue(30)}px;
 `
 
 export const Subtitle = styled.Text`
-  color: ${({ theme }) => theme.colors.subtitle_id};
-  font-family: ${({ theme }) => theme.fonts.regular};
+  color: ${({ theme }) => theme.colors.subtitles};
+  font-family: ${({ theme }) => theme.fonts.poppins_regular};
   font-size: ${RFValue(10)}px;
   margin-bottom: ${RFValue(5)}px;
+`
+
+export const ViewInputs = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
 `
 
 export const AreaInput = styled.View`
@@ -135,12 +127,6 @@ export const AreaInput = styled.View`
   align-items: center;
   justify-content: center;
   height: ${RFValue(40)}px;
-  /* margin-bottom: ${RFValue(13)}px; */
-`
-
-export const AreaInputs = styled.KeyboardAvoidingView`
-  flex-direction: row;
-  justify-content: space-between;
 `
 
 export const TouchableOk = styled.TouchableOpacity`
@@ -155,6 +141,6 @@ export const TouchableOk = styled.TouchableOpacity`
 
 export const TextOk = styled.Text`
   color: ${({ theme }) => theme.colors.background};
-  font-family: ${({ theme }) => theme.fonts.medium};
+  font-family: ${({ theme }) => theme.fonts.poppins_medium};
   font-size: ${RFValue(14)}px;
 `
