@@ -68,7 +68,7 @@ export default function App() {
                 headerShadowVisible: false,
                 headerTitleStyle: {
                   fontSize: 18,
-                  color: theme.colors.title_login,
+                  color: theme.colors.title_screens,
                 }
               }}
             />
@@ -82,7 +82,7 @@ export default function App() {
                 headerShadowVisible: false,
                 headerTitleStyle: {
                   fontSize: 18,
-                  color: theme.colors.title_login,
+                  color: theme.colors.title_screens,
                 }
               }}
             />

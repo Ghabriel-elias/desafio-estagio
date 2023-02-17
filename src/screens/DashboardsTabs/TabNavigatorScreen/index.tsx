@@ -43,7 +43,7 @@ export function Dashboard() {
         },
       })}
     >
-      <Tab.Screen name="Relatorios" key={1} component={Static}
+      <Tab.Screen name="Relatorios" component={Static}
         options={{
           title: 'Relatórios',
         }}
